@@ -41,9 +41,11 @@ export class ChatGateway
       client: Socket,
       payload: { room: string; message: string, user: string },
     ) {
+
       const { room, message, user } = payload;
       console.log(payload)
       this.server.to(`room_${room}`).emit('new_message',{message,user});
+      
     }
 
   @SubscribeMessage('event_leave')
